@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  mysql01:
+    build: .
+    container_name: mysql01
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - "./mysql01/conf:/etc/mysql/conf.d"
+      - "./mysql01/initdb:/docker-entrypoint-initdb.d"
+      - "./mysql01/datadir:/var/lib/mysql"
+      - "./certs:/tmp/certs"
+  mysql02:
+    build: .
+    container_name: mysql02
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - "./mysql02/conf:/etc/mysql/conf.d"
+      - "./mysql02/initdb:/docker-entrypoint-initdb.d"
+      - "./mysql02/datadir:/var/lib/mysql"
+      - "./certs:/tmp/certs"
+
